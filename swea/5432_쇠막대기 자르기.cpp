@@ -1,33 +1,35 @@
 #include <iostream>
-#include <queue>
+#include <stack>
+#include <string>
 using namespace std;
-int main() {
-	for (int TC = 1; TC <= 10; TC++) {
-		int num, tmp;
-		queue<int>q;
-		cin >> num;
-		for (int i = 0; i < 8; i++) {
-			cin >> num;
-			q.push(num);
-		}
-
-		int b = 0;
-		while (1) {
-			if (++b > 5)
-				b = 1;
-			tmp = q.front() - b;
-			q.pop();
-			if (tmp <= 0) {
-				q.push(0);
-				break;
+stack<char>s;
+int main()
+{
+	ios_base::sync_with_stdio(NULL); cin.tie(NULL); cout.tie(NULL);
+	int T;
+	char tmp;
+	bool flag;
+	string text;
+	cin >> T;
+	for (int TC = 1; TC <= T; TC++) {
+		int res = 0;
+		flag = false;
+		cin >> text;
+		for (int i = 0; i < text.length(); i++) {
+			tmp = text[i];
+			if (tmp == '(') {
+				s.push(tmp);
+				flag = false;
 			}
-			q.push(tmp);
+			else {
+				s.pop();
+				if (!flag)
+					res += s.size();
+				else
+					res++;
+				flag = true;
+			}
 		}
-		cout << "#" << TC << " ";
-		while (!q.empty()) {
-			cout << q.front() << " ";
-			q.pop();
-		}
-		cout << "\n";
+		cout << "#" << TC << " " << res << "\n";
 	}
 }
