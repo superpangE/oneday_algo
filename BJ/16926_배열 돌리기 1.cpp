@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int N, M, R, tmp, tmp2, rmove, cnt;
+int N, M, R, tmp, cnt;
 int main()
 {
 	ios_base::sync_with_stdio(NULL); cin.tie(NULL); cout.tie(NULL);
