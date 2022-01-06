@@ -1,6 +1,8 @@
 -- 입양 시각 구하기4
 SET @TMP = -1;
 
-SELECT (@TMP := @TMP+1) AS 'HOUR'
+SELECT (@TMP := @TMP+1) AS 'HOUR' (SELECT COUNT(*)
+					FROM ANIMAL_OUTS
+					WHERE @TMP = date_format(DATETIME,'%H'))
 FROM ANIMAL_OUTS
 WHERE @TMP < 23;
