@@ -1,0 +1,6 @@
+-- 입양 시각 구하기4
+SET @TMP = -1;
+
+SELECT (@TMP := @TMP+1) AS 'HOUR'
+FROM ANIMAL_OUTS
+WHERE @TMP < 23;
